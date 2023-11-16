@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:simple_social/pages/login_page.dart';
-import 'package:simple_social/router.dart';
-import 'package:simple_social/theme/light_mode.dart';
-import 'package:simple_social/theme/dark_mode.dart';
+import 'package:minimal_social/pages/login_page.dart';
+import 'package:minimal_social/router.dart';
+import 'package:minimal_social/theme/light_mode.dart';
+import 'package:minimal_social/theme/dark_mode.dart';
 
 void main() {
   runApp(const MyApp());

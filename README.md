@@ -1,3 +1,3 @@
-# simple_social
+# minimal_social
 
-Simple social media app
+Minimal social media app

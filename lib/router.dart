@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_social/pages/login_page.dart';
-import 'package:simple_social/pages/register_page.dart';
+import 'package:minimal_social/pages/login_page.dart';
+import 'package:minimal_social/pages/register_page.dart';
 
 class MINRouter {
   static GoRouter router = GoRouter(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_social/components/min_button.dart';
-import 'package:simple_social/components/min_textfield.dart';
+import 'package:minimal_social/components/min_button.dart';
+import 'package:minimal_social/components/min_textfield.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
