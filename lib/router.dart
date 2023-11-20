@@ -24,7 +24,7 @@ class MINRouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const HomePage();
+          return HomePage();
         },
         routes: [
           GoRoute(
