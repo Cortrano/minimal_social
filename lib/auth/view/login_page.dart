@@ -1,18 +1,36 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:minimal_social/components/min_button.dart';
-import 'package:minimal_social/components/min_textfield.dart';
+import 'package:minimal_social/components/components.dart';
+import 'package:minimal_social/utils/utils.dart';
 
-class RegisterPage extends StatelessWidget {
-  final TextEditingController usernameController = TextEditingController();
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController repeatPasswordController =
-      TextEditingController();
 
-  RegisterPage({super.key});
-
-  void register() {}
+  void login() async {
+    displayLoader(context);
+    try {
+      UserCredential? userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      if (!context.mounted) return;
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      displayMessage(e.code, context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +43,7 @@ class RegisterPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.person,
+                Icons.circle_outlined,
                 size: 80.0,
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
@@ -36,39 +54,40 @@ class RegisterPage extends StatelessWidget {
               ),
               const SizedBox(height: 25.0),
               MINTextField(
-                hintText: "Username",
-                obscureText: false,
-                controller: usernameController,
-              ),
-              const SizedBox(height: 10.0),
-              MINTextField(
-                hintText: "Email",
+                hintText: "email",
                 obscureText: false,
                 controller: emailController,
               ),
               const SizedBox(height: 10.0),
               MINTextField(
-                hintText: "Password",
+                hintText: "password",
                 obscureText: true,
                 controller: passwordController,
               ),
               const SizedBox(height: 10.0),
-              MINTextField(
-                hintText: "Repeat Password",
-                obscureText: true,
-                controller: repeatPasswordController,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Forgot password?",
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 25.0),
-              MINButton(text: "Register", onTap: register),
+              MINButton(text: "Login", onTap: login),
               const SizedBox(height: 10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Already have an account?"),
+                  const Text("Don't have an account?"),
                   GestureDetector(
-                    onTap: () => context.go("/"),
+                    onTap: () => context.go("/register"),
                     child: const Text(
-                      " Login here!",
+                      " Register here!",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
