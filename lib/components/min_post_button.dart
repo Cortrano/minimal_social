@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MINPostButton extends StatelessWidget {
   final void Function() onTap;
+
   const MINPostButton({super.key, required this.onTap});
 
   @override

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:minimal_social/components/components.dart';
-import 'package:minimal_social/components/min_post_tile.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({super.key});

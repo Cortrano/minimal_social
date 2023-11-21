@@ -31,7 +31,6 @@ class MINDrawer extends StatelessWidget {
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(left: 25.0),
             child: ListTile(
@@ -46,7 +45,6 @@ class MINDrawer extends StatelessWidget {
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(left: 25.0),
             child: ListTile(
@@ -61,7 +59,7 @@ class MINDrawer extends StatelessWidget {
               },
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.only(left: 25.0, bottom: 25.0),
             child: ListTile(
@@ -73,10 +71,6 @@ class MINDrawer extends StatelessWidget {
               onTap: () => FirebaseAuth.instance.signOut(),
             ),
           ),
-
-          // users tile
-
-          // settings tile
         ],
       ),
     );

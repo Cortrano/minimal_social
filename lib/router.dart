@@ -15,12 +15,6 @@ class MINRouter {
   MINRouter() : loginInfo = FirebaseAuth.instance.currentUser;
   static GoRouter router = GoRouter(
     routes: <RouteBase>[
-      // GoRoute(
-      //   path: '/',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     return Scaffold(body: const Placeholder());
-      //   },
-      // ),
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
@@ -57,12 +51,15 @@ class MINRouter {
     refreshListenable:
         GoRouterRefreshStream(FirebaseAuth.instance.authStateChanges()),
     redirect: (BuildContext context, GoRouterState state) {
-      final loggingIn = state.matchedLocation == '/login';
+      final loggingIn = state.matchedLocation == '/register' ||
+          state.matchedLocation == '/login';
       if (FirebaseAuth.instance.currentUser == null &&
           state.matchedLocation != '/register') {
         return '/login';
       }
-      if (loggingIn) return '/';
+      if (FirebaseAuth.instance.currentUser != null && loggingIn) {
+        return '/';
+      }
       return null;
     },
   );
